@@ -23,10 +23,10 @@ setInterval(() => {
 function createBot() {
   console.log('Attempting to connect to Minecraft server...')
   const bot = mineflayer.createBot({
-    host: '2h698.aternos.me:46750',
+    host: '2h698.aternos.me',
     version: "1.16.5", // U can replace with 1.16.5 for example, remember to use ', = '1.16.5'
     username: 'SG_SHOWRIYA',
-    port: 31761,
+    port: 46750,
     plugins: [AutoAuth],
     AutoAuth: 'bot112022',
     connectTimeout: 30000 // 30 second timeout
