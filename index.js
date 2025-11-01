@@ -15,7 +15,9 @@ app.get("/", (_, res) => res.sendFile(__dirname + "/index.html"));
 app.listen(process.env.PORT);
 
 setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.repl.co/`);
+  if (process.env.REPLIT_DEV_DOMAIN) {
+    http.get(`https://${process.env.REPLIT_DEV_DOMAIN}/`).on('error', () => {});
+  }
 }, 224000);
 
 
