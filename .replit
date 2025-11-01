@@ -1,6 +1,7 @@
 entrypoint = "index.js"
 
 hidden = [".config"]
+modules = ["nodejs-20"]
 
 [interpreter]
 command = [
@@ -82,3 +83,46 @@ support = true
       sourceMaps = true
       stopOnEntry = false
       type = "pwa-node"
+
+[[ports]]
+localPort = 35097
+externalPort = 80
+
+[[ports]]
+localPort = 36439
+externalPort = 3000
+
+[[ports]]
+localPort = 46053
+externalPort = 3001
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[agent]
+expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "minecraft-bot"
+
+[[workflows.workflow]]
+name = "minecraft-bot"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "PORT=5000 node index.js"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"

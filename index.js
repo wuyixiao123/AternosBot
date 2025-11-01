@@ -21,16 +21,21 @@ setInterval(() => {
 
 // U CAN ONLY EDIT THIS SECTION!!
 function createBot() {
+  console.log('Attempting to connect to Minecraft server...')
   const bot = mineflayer.createBot({
-    host: 'lmaob6kn.aternos.me',
-    version: false, // U can replace with 1.16.5 for example, remember to use ', = '1.16.5'
+    host: '2h698.aternos.me',
+    version: "1.16.5", // U can replace with 1.16.5 for example, remember to use ', = '1.16.5'
     username: 'SG_SHOWRIYA',
-    port: 48477
-    ,
+    port: 31761,
     plugins: [AutoAuth],
-    AutoAuth: 'bot112022'
+    AutoAuth: 'bot112022',
+    connectTimeout: 30000 // 30 second timeout
   })
   /// DONT TOUCH ANYTHING MORE!
+  
+  bot.on('spawn', () => {
+    console.log('Bot successfully connected and spawned!')
+  })
   bot.loadPlugin(pvp)
   bot.loadPlugin(armorManager)
   bot.loadPlugin(pathfinder)
@@ -102,8 +107,8 @@ function createBot() {
     if (message === 'guard') {
       const player = bot.players[username]
 
-      if (!player) {
-        bot.chat('I will!')
+      if (player && player.entity) {
+        bot.chat('I will guard this area!')
         guardArea(player.entity.position)
       }
 
@@ -114,9 +119,21 @@ function createBot() {
     }
   })
 
-  bot.on('kicked', console.log)
-  bot.on('error', console.log)
-  bot.on('end', createBot)
+  bot.on('kicked', (reason) => {
+    console.log('Bot was kicked:', reason)
+  })
+  
+  bot.on('error', (err) => {
+    console.error('Bot error:', err.message)
+    if (err.code === 'ECONNRESET') {
+      console.log('Connection was reset. The server might be offline or unreachable.')
+    }
+  })
+  
+  bot.on('end', () => {
+    console.log('Connection ended. Reconnecting in 5 seconds...')
+    setTimeout(createBot, 5000) // Wait 5 seconds before reconnecting
+  })
 }
 
 createBot()
