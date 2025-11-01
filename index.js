@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const https = require("https");
 const mineflayer = require('mineflayer')
 const pvp = require('mineflayer-pvp').plugin
 const { pathfinder, Movements, goals } = require('mineflayer-pathfinder')
@@ -16,7 +17,7 @@ app.listen(process.env.PORT);
 
 setInterval(() => {
   if (process.env.REPLIT_DEV_DOMAIN) {
-    http.get(`https://${process.env.REPLIT_DEV_DOMAIN}/`).on('error', () => {});
+    https.get(`https://${process.env.REPLIT_DEV_DOMAIN}/`).on('error', () => {});
   }
 }, 224000);
 
@@ -31,7 +32,7 @@ function createBot() {
     port: 46750,
     plugins: [AutoAuth],
     AutoAuth: 'bot112022',
-    connectTimeout: 30000 // 30 second timeout
+    connectTimeout: Infinity // 30 second timeout
   })
   /// DONT TOUCH ANYTHING MORE!
   
