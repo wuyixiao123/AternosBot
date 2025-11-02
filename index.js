@@ -9,7 +9,6 @@ const mc = require('minecraft-protocol');
 const AutoAuth = require('mineflayer-auto-auth');
 const app = express();
 
-
 app.use(express.json());
 
 app.get("/", (_, res) => res.sendFile(__dirname + "/index.html"));
