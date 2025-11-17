@@ -1,0 +1,14 @@
+{
+  "mcServer": {
+    "host": "2h698.aternos.me",
+    "port": 46750,
+    "username": "BotPlayer",
+    "version": "1.21.10"
+  },
+  "webServer": {
+    "port": 3000
+  },
+  "supportedVersions": [
+    "1.20.1", "1.19.4", "1.18.2", "1.17.1", "1.16.5"
+  ]
+}
