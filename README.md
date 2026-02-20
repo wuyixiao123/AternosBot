@@ -3,6 +3,8 @@
 ![https://img.shields.io/badge/mineflayer-4.3.0-blue](https://img.shields.io/badge/mineflayer-4.3.0-blue)
 ![https://img.shields.io/badge/PRs-welcome-brightgreen.svg](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
+
+请勿直接更改!请先提交issues或者先fork再请求
 🚀 让您的 Aternos 服务器永不掉线！
 一个专为 Aternos 免费服务器设计的智能 Minecraft 机器人，内置多重保活机制、Web 控制面板和自动重连，真正做到 24/7 全天候运行。
 
