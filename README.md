@@ -5,8 +5,7 @@
 
 🚀 让您的 Aternos 服务器永不掉线！
 一个专为 Aternos 免费服务器设计的智能 Minecraft 机器人，内置多重保活机制、Web 控制面板和自动重连，真正做到 24/7 全天候运行。
-https://via.placeholder.com/800x400?text=Web+Dashboard+Preview
-（请将上方占位图替换为您自己的截图）
+
 
 ✨ 功能亮点
 
