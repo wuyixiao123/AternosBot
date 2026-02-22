@@ -44,7 +44,7 @@ cd aternos-bot
 bash
 npm install
 配置服务器信息
-编辑 index_fixed.js 文件，修改开头的 host 和 port 为您自己的 Aternos 服务器地址。
+编辑 config.json 文件，修改开头的 host 和 port 为您自己的 Aternos 服务器地址。
 启动机器人
 
 bash
