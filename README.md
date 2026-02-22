@@ -37,7 +37,7 @@ npm 或 yarn
 克隆仓库
 
 bash
-git clone https://github.com/yourname/aternos-bot.git
+git clone https://github.com/wuyixiao123/aternos-bot.git
 cd aternos-bot
 安装依赖
 
