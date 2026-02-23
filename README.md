@@ -6,6 +6,9 @@
 
 My discord: https://discord.gg/Hv5VyTx3kH
 
+可自由使用并编辑本项目   请勿将本项目用作任何商业用途
+
+部分内容可再调试过程中被删除或更换实现方式(自己摸索吧),可自定义
 
 请勿直接更改!请先提交issues或者先fork再请求
 🚀 让您的 Aternos 服务器永不掉线！
