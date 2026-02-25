@@ -62,7 +62,7 @@ npm install
 
 bash
 
-node index_fixed.js
+node index.js
 
 打开浏览器访问 http://localhost:5000 查看 Web 控制面板。
 
