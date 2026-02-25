@@ -43,19 +43,29 @@ npm 或 yarn
 克隆仓库
 
 bash
+
 git clone https://github.com/wuyixiao123/aternos-bot.git
+
 cd aternos-bot
+
 安装依赖
 
 bash
+
 npm install
+
 配置服务器信息
+
 编辑 config.json 文件，修改开头的 host 和 port 为您自己的 Aternos 服务器地址。
+
 启动机器人
 
 bash
+
 node index_fixed.js
+
 打开浏览器访问 http://localhost:5000 查看 Web 控制面板。
+
 ⚙️ 配置说明
 
 所有重要配置集中在文件开头的对象中，您可以根据需要修改：
