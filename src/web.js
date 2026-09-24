@@ -34,13 +34,6 @@ class WebServer {
 
     this.app.get('/ping', (req, res) => res.status(200).send('pong'));
 
-    this.app.post('/api/update', (req, res) => {
-      if (!req.body || typeof req.body !== 'object') {
-        return res.status(400).json({ success: false, error: '请求体必须是 JSON 对象' });
-      }
-      res.json({ success: true, status: this.store.update(req.body) });
-    });
-
     this.app.use(express.static(path.join(__dirname, '..', 'public')));
 
     this.app.use((req, res) => {
