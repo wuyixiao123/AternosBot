@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AternosBot 控制面板</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    body { margin:0; background:#111827; color:#f3f4f6; }
+    main { max-width:900px; margin:auto; padding:24px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .card { background:#1f2937; border:1px solid #374151; border-radius:12px; padding:16px; margin-bottom:16px; }
+    .label { color:#9ca3af; font-size:13px; }
+    .value { font-size:18px; margin-top:5px; word-break:break-word; }
+    .online { color:#34d399; } .offline { color:#f87171; } .waiting { color:#fbbf24; }
+    code { background:#111827; padding:2px 6px; border-radius:5px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>🤖 AternosBot</h1>
+  <p>模块化重构版 · <code id="version">-</code></p>
+  <div class="card">
+    <div class="grid">
+      <div><div class="label">机器人</div><div id="online" class="value">加载中…</div></div>
+      <div><div class="label">服务器</div><div id="server" class="value">加载中…</div></div>
+      <div><div class="label">连接状态</div><div id="state" class="value">-</div></div>
+      <div><div class="label">当前版本</div><div id="mcVersion" class="value">-</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="grid">
+      <div><div class="label">机器人名称</div><div id="name" class="value">-</div></div>
+      <div><div class="label">附近玩家</div><div id="players" class="value">-</div></div>
+      <div><div class="label">生命值</div><div id="health" class="value">-</div></div>
+      <div><div class="label">位置</div><div id="position" class="value">-</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="label">最后活动</div><div id="activity" class="value">-</div>
+    <div class="label" style="margin-top:12px">错误</div><div id="error" class="value">无</div>
+  </div>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  const statusClass = value => value ? 'online' : 'offline';
+  async function refresh() {
+    try {
+      const res = await fetch('/api/status', { cache: 'no-store' });
+      const data = await res.json();
+      const b = data.bot;
+      $('online').textContent = b.isOnline ? '🟢 在线' : '🔴 离线';
+      $('online').className = 'value ' + statusClass(b.isOnline);
+      $('server').textContent = b.serverOnline ? '🟢 在线' : '🔴 离线';
+      $('server').className = 'value ' + statusClass(b.serverOnline);
+      $('state').textContent = b.connectionState;
+      $('state').className = 'value ' + (b.connectionState === 'online' ? 'online' : b.connectionState === 'waiting' ? 'waiting' : '');
+      $('version').textContent = b.serverVersion;
+      $('mcVersion').textContent = b.currentVersion;
+      $('name').textContent = b.botName;
+      $('players').textContent = b.playersNearby;
+      $('health').textContent = b.health;
+      $('position').textContent = b.position || '-';
+      $('activity').textContent = b.lastActivity || '-';
+      $('error').textContent = b.error || '无';
+    } catch (e) {
+      $('error').textContent = '无法获取状态: ' + e.message;
+    }
+  }
+  refresh();
+  setInterval(refresh, 10000);
+</script>
+</body>
+</html>
