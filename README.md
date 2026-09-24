@@ -57,7 +57,6 @@ PORT=3000
 - `GET /health`：健康检查
 - `GET /api/status`：Bot 当前状态
 - `GET /ping`：简单连通性检查
-- `POST /api/update`：更新状态（建议仅在可信网络使用）
 
 ## 注意
 
