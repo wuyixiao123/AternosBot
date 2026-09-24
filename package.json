@@ -1,19 +1,20 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "aternos-bot",
+  "version": "2.0.0",
+  "description": "模块化 Minecraft / Aternos Bot",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "node server.js",
-    "dev": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "node src/index.js",
+    "test": "node --test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["minecraft", "mineflayer", "aternos", "bot"],
+  "author": "wuyixiao123",
+  "license": "MIT",
   "dependencies": {
-    "@types/node": "^18.0.6",
     "express": "^4.18.1",
     "minecraft-data": "^3.9.1",
     "minecraft-protocol": "^1.35.1",
@@ -21,7 +22,6 @@
     "mineflayer-armor-manager": "^1.4.2",
     "mineflayer-auto-auth": "^2.0.0",
     "mineflayer-pathfinder": "^2.3.0",
-    "mineflayer-pvp": "^1.3.2",
-    "node-fetch": "^3.2.6"
+    "mineflayer-pvp": "^1.3.2"
   }
 }
